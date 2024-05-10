@@ -10,6 +10,9 @@ export class UpdateBookDTO {
   @Min(1)
   @Max(5)
   @IsNotEmpty()
+  @Transform(({ value }) => {
+    return Number(value);
+  })
   rating: number;
 
   @Min(1)

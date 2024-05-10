@@ -9,6 +9,9 @@ export class CreateBookDTO {
 
   @Min(1)
   @Max(5)
+  @Transform(({ value }) => {
+    return Number(value);
+  })
   @IsNotEmpty()
   rating: number;
 
