@@ -24,8 +24,9 @@ export class AuthorsService {
         data: authorData,
       });
     } catch (error) {
-      if (error.code === 'P2002')
+      if (error.code === 'P2002') {
         throw new ConflictException('Name is already taken');
+      }
       throw error;
     }
   }
@@ -40,8 +41,9 @@ export class AuthorsService {
         data: authorData,
       });
     } catch (error) {
-      if (error.code === 'P2002')
+      if (error.code === 'P2002') {
         throw new ConflictException('Name is already taken');
+      }
       throw error;
     }
   }

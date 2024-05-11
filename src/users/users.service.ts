@@ -52,8 +52,9 @@ export class UsersService {
         },
       });
     } catch (error) {
-      if (error.code === 'P2002')
+      if (error.code === 'P2002') {
         throw new ConflictException('Email is already taken');
+      }
       throw error;
     }
   }
@@ -82,8 +83,9 @@ export class UsersService {
         },
       });
     } catch (error) {
-      if (error.code === 'P2002')
+      if (error.code === 'P2002') {
         throw new ConflictException('Email is already taken');
+      }
       throw error;
     }
   }

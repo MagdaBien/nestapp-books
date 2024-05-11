@@ -74,8 +74,9 @@ export class BooksController {
   async deleteById(
     @Param('id', new ParseUUIDPipe()) id: string,
   ): Promise<Book> {
-    if (!(await this.booksService.getById(id)))
+    if (!(await this.booksService.getById(id))) {
       throw new NotFoundException('Book not found');
+    }
     return await this.booksService.deleteById(id);
   }
 }

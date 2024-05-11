@@ -7,7 +7,7 @@ import {
   Param,
   Body,
   NotFoundException,
-  UseGuards
+  UseGuards,
 } from '@nestjs/common';
 import { AuthorsService } from './authors.service';
 import { CreateAuthorDTO } from './dtos/create-author.dto';
@@ -61,9 +61,9 @@ export class AuthorsController {
   async deleteById(
     @Param('id', new ParseUUIDPipe()) id: string,
   ): Promise<Author> {
-    if (!(await this.authorsService.getById(id)))
+    if (!(await this.authorsService.getById(id))) {
       throw new NotFoundException('Author not found');
+    }
     return await this.authorsService.deleteById(id);
   }
-
 }

@@ -28,8 +28,9 @@ export class BooksService {
         data: bookData,
       });
     } catch (error) {
-      if (error.code === 'P2002')
+      if (error.code === 'P2002') {
         throw new ConflictException('Name is already taken');
+      }
       throw error;
     }
   }
@@ -44,8 +45,9 @@ export class BooksService {
         data: bookData,
       });
     } catch (error) {
-      if (error.code === 'P2002')
+      if (error.code === 'P2002') {
         throw new ConflictException('Title is already taken');
+      }
       throw error;
     }
   }
@@ -56,7 +58,7 @@ export class BooksService {
     });
   }
 
-  public async likeBook(bookId: Book['id'], userId: User['id']): Promise<Book>{
+  public async likeBook(bookId: Book['id'], userId: User['id']): Promise<Book> {
     return await this.prismaService.book.update({
       where: { id: bookId },
       data: {

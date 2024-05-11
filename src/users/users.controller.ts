@@ -38,8 +38,9 @@ export class UsersController {
   @UseGuards(AdminAuthGuard)
   @UseGuards(JwtAuthGuard)
   public async delete(@Param('id', new ParseUUIDPipe()) id: string) {
-    if (!(await this.usersService.getById(id)))
+    if (!(await this.usersService.getById(id))) {
       throw new NotFoundException('User not found');
+    }
     await this.usersService.deleteById(id);
     return { success: true };
   }
