@@ -27,5 +27,6 @@ export class UpdateBookDTO {
   @IsUUID()
   @IsString()
   authorId: string;
+
 }
 
